@@ -110,7 +110,6 @@ namespace site_backend_admin
             }
         }
 
-        // ✅ Исправлено: используем ApiClient.Client вместо client
         public async Task<List<Question>> GetQuestionsAsync()
         {
             try
@@ -128,12 +127,12 @@ namespace site_backend_admin
             }
             catch (Exception ex)
             {
+                MessageBox.Show($"{ex}");
                 Console.WriteLine($"{ex}");
                 throw;
             }
         }
 
-        // ✅ Исправлено: используем ApiClient.Client вместо client
         public async void SendAuthCode(string email)
         {
             try
@@ -178,7 +177,6 @@ namespace site_backend_admin
             }
         }
 
-        // ✅ Исправлено: используем ApiClient.Client вместо client
         public async Task<string> ChangeQuestionsStatus(string questionId, string newStatus)
         {
             try
@@ -215,11 +213,10 @@ namespace site_backend_admin
             {
                 string url = "handle_questions/answer_question";
 
-                // ✅ Отправляем правильные поля: message и question_id
                 var answerObject = new
                 {
-                    message = answer,           // поле должно называться message
-                    question_id = questionId    // и question_id
+                    message = answer,
+                    question_id = questionId
                 };
 
                 string jsonAnswer = JsonConvert.SerializeObject(answerObject);
@@ -566,6 +563,12 @@ namespace site_backend_admin
                 button5.Enabled = true;
                 button5.Text = "Сохранить изменения";
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string url = "http://localhost:3000/";
+            System.Diagnostics.Process.Start(url);
         }
     }
 }

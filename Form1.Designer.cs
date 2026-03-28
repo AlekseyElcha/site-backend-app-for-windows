@@ -336,6 +336,7 @@
             this.button6.TabIndex = 22;
             this.button6.Text = "Перейти на онлайн-платформу";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 

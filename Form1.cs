@@ -18,10 +18,7 @@ namespace site_backend_admin
 
         [DllImport("kernel32.dll")]
         static extern bool FreeConsole();
-
-        // Удаляем этот client, так как будем использовать ApiClient.Client
-        // private static readonly HttpClient client = new HttpClient();
-
+        
         private List<Question> allStatusQuestions = new List<Question>();
         private List<Question> allActiveQuestions = new List<Question>();
 
@@ -159,7 +156,7 @@ namespace site_backend_admin
             }
         }
 
-        // ✅ Исправлено: используем ApiClient.Client вместо client
+    
         public async Task<string> GetFileLinksForQuestion(string questionId)
         {
             try
